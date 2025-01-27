@@ -4,7 +4,7 @@ from synergyml.multimodal import MultimodalClassifier
 # Setup credentials
 api_key = "your_api_key"
 SynergyMLConfig.set_openai_key(api_key)
-SynergyMLConfig.set_openai_org("org-2yCwUrd6qu4deDTpUzDrHUwW")
+SynergyMLConfig.set_openai_org("org_key")
 
 # Initialize classifier with updated model name
 classifier = MultimodalClassifier(
