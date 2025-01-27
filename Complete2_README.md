@@ -179,7 +179,7 @@ If you use this package in your research, please cite:
   title={SynergyML: Advanced Multimodal Analysis Package},
   author={Your Name},
   year={2024},
-  url={https://github.com/yourusername/synergyml}
+  url={https://github.com/tanzil7890/synergyml}
 }
 ```
 
