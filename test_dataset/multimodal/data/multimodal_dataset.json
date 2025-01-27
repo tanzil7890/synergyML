@@ -1,0 +1,65 @@
+{
+  "features": {
+    "text": [
+      "Great product, exactly as shown in the picture!",
+      "Poor quality and different from the image",
+      "Perfect fit and beautiful design",
+      "The color is different from what's shown",
+      "Excellent quality and fast shipping",
+      "Not worth the price, looks cheap",
+      "Comfortable but runs small",
+      "Amazing product, highly recommend"
+    ],
+    "image": [
+      "test_dataset/multimodal/images/product1_good.jpg",
+      "test_dataset/multimodal/images/product2_bad.jpg",
+      "test_dataset/multimodal/images/product3_good.jpg",
+      "test_dataset/multimodal/images/product4_bad.jpg",
+      "test_dataset/multimodal/images/product5_good.jpg",
+      "test_dataset/multimodal/images/product6_bad.jpg",
+      "test_dataset/multimodal/images/product7_good.jpg",
+      "test_dataset/multimodal/images/product8_good.jpg"
+    ]
+  },
+  "labels": [
+    [
+      "positive",
+      "accurate",
+      "quality"
+    ],
+    [
+      "negative",
+      "inaccurate",
+      "quality_issue"
+    ],
+    [
+      "positive",
+      "fit",
+      "design"
+    ],
+    [
+      "negative",
+      "color_mismatch"
+    ],
+    [
+      "positive",
+      "quality",
+      "service"
+    ],
+    [
+      "negative",
+      "value",
+      "quality_issue"
+    ],
+    [
+      "neutral",
+      "size_issue",
+      "comfort"
+    ],
+    [
+      "positive",
+      "satisfaction",
+      "quality"
+    ]
+  ]
+}

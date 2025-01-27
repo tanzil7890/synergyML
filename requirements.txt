@@ -1,0 +1,4 @@
+# Video-Audio Sync
+av>=10.0.0
+librosa>=0.10.0
+scipy>=1.9.0 

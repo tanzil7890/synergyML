@@ -1,0 +1,150 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "synergyml"
+version = "1.4.1"
+description = "A Python package for integrating LLMs with scikit-learn for enhanced ML tasks"
+authors = [
+    {name = "Mohammad Tanzil Idrisi", email = "tanzil.idrisi@gmail.com"}
+]
+dependencies = [
+    "scikit-learn>=1.0.0",
+    "numpy>=1.20.0",
+    "openai>=1.0.0",
+    "tqdm>=4.65.0",
+    "Pillow>=10.0.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "vertexai>=0.0.1; python_version >= '3.9'",
+    "llama-cpp-python>=0.2.0; python_version >= '3.9'",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "ruff>=0.0.263",
+    "pre-commit>=3.3.1",
+    "mypy>=1.0.0",
+]
+llama_cpp = [
+    "llama-cpp-python>=0.2.0",
+]
+vision = [
+    "Pillow>=10.0.0",
+    "numpy>=1.20.0",
+]
+audio = [
+    "librosa>=0.10.1",
+    "soundfile>=0.12.1",
+    "torchaudio>=2.0.2",
+    "spacy>=3.8.0",
+    "nltk>=3.9.0",
+    "ffmpeg-python>=0.2.0",
+    "scipy>=1.9.0",
+    "dtaidistance>=2.3.0",
+    "PyWavelets>=1.4.0",
+    "statsmodels>=0.14.0"
+]
+video = [
+    # Core video processing
+    "opencv-python>=4.8.0",
+    "moviepy>=1.0.3",
+    "av>=10.0.0",
+    
+    # Deep learning & Vision
+    "torch>=2.0.1",
+    "transformers>=4.30.0",
+    "timm>=0.9.2",
+    
+    # Object Detection and Tracking
+    "ultralytics>=8.0.0",  # YOLOv8
+    "deepface>=0.0.79",    # Face and emotion detection
+    
+    # Core dependencies
+    "numpy>=1.24.3",
+    "Pillow>=10.0.0",
+    "scikit-learn>=1.2.2",
+    "tqdm>=4.65.0"
+]
+visualization = [
+    "plotly>=5.0.0",
+    "pandas>=1.3.0",
+    "numpy>=1.20.0"
+]
+
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.docformatter]
+recursive = true
+wrap-summaries = 88
+wrap-descriptions = 88
+blank = true
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+show_error_codes = true
+ignore_missing_imports = true
+
+[tool.setuptools]
+package-data = {"synergyml" = ["py.typed"]}
+
+[tool.pyright]
+include = ["synergyml"]
+extraPaths = ["synergyML-package"]
+reportMissingImports = true
+reportMissingModuleSource = false
+stubPath = "typings"
+
+[tool.pylance]
+python.analysis.typeCheckingMode = "basic"
+python.analysis.diagnosticMode = "workspace"
+python.analysis.extraPaths = ["synergyML-package"]

@@ -1,0 +1,13 @@
+pre-commit
+black
+isort
+ruff
+docformatter
+interrogate
+numpy
+pandas
+Pillow
+
+# Include extension requirements
+-r requirements-video.txt
+-r requirements-audio.txt

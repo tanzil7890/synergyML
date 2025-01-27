@@ -1,0 +1,116 @@
+# Model Registry Configuration
+
+# Base paths
+registry:
+  base_path: "models/registry"
+  cache_dir: "models/cache"
+  mlflow_uri: "sqlite:///models/mlflow.db"
+
+# Storage configuration
+storage:
+  format: "pytorch"
+  compression: true
+  backup_enabled: true
+  backup_frequency: "daily"
+  max_versions_per_model: 5
+  cleanup_policy:
+    max_age_days: 90
+    min_versions_keep: 2
+
+# Cache configuration
+cache:
+  enabled: true
+  max_size_gb: 10
+  ttl_hours: 24
+  eviction_policy: "lru"
+
+# MLflow tracking
+mlflow:
+  enabled: true
+  experiment_name: "model_tracking"
+  tags:
+    environment: "production"
+    project: "synergyml"
+  metrics:
+    track_memory: true
+    track_inference_time: true
+    track_gpu_usage: true
+
+# Model validation
+validation:
+  required_metadata:
+    - input_shape
+    - output_shape
+    - performance_metrics
+  performance_thresholds:
+    scene_detection:
+      min_accuracy: 0.85
+      max_latency_ms: 100
+    sync:
+      min_correlation: 0.9
+      max_offset_error_ms: 50
+
+# Deployment
+deployment:
+  strategies:
+    - "blue_green"
+    - "canary"
+    - "rolling"
+  environments:
+    - name: "development"
+      auto_deploy: true
+      validation_required: false
+    - name: "staging"
+      auto_deploy: false
+      validation_required: true
+    - name: "production"
+      auto_deploy: false
+      validation_required: true
+      approval_required: true
+
+# Security
+security:
+  encryption_enabled: true
+  checksum_verification: true
+  access_control:
+    enabled: true
+    roles:
+      - name: "admin"
+        permissions: ["read", "write", "delete", "deploy"]
+      - name: "data_scientist"
+        permissions: ["read", "write"]
+      - name: "inference"
+        permissions: ["read"]
+
+# Monitoring
+monitoring:
+  enabled: true
+  metrics:
+    - name: "model_load_time"
+      type: "histogram"
+      description: "Time taken to load model"
+    - name: "cache_hit_rate"
+      type: "gauge"
+      description: "Cache hit rate"
+    - name: "model_memory_usage"
+      type: "gauge"
+      description: "Memory usage per model"
+  alerts:
+    - name: "high_load_time"
+      condition: "model_load_time > 5s"
+      severity: "warning"
+    - name: "low_cache_hit"
+      condition: "cache_hit_rate < 0.5"
+      severity: "info"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  handlers:
+    - type: "file"
+      filename: "logs/model_registry.log"
+      max_bytes: 10485760  # 10MB
+      backup_count: 5
+    - type: "stream"
+      level: "INFO" 

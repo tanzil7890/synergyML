@@ -1,0 +1,38 @@
+# Core audio processing
+librosa==0.10.1
+soundfile==0.12.1
+torchaudio==2.0.2
+torch==2.0.1
+
+# NLP and text processing
+spacy>=3.8.0
+nltk>=3.9.0
+
+# Audio conversion
+ffmpeg-python>=0.2.0
+
+# Deep learning
+transformers==4.30.0
+
+# Audio analysis
+scipy>=1.9.0
+dtaidistance>=2.3.0
+scikit-learn>=1.0.0
+PyWavelets>=1.4.0
+statsmodels>=0.14.0
+praat-parselmouth>=0.4.3
+resampy>=0.4.2
+numba>=0.56.4
+
+# Remove problematic aubio installation
+# aubio>=0.4.9  # Commented out direct pip installation
+
+# Testing
+pytest>=7.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.13.0
+ipywidgets>=8.0.0  # For plotly in notebooks
+kaleido>=0.2.1     # For plotly static image export
