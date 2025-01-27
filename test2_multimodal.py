@@ -2,7 +2,7 @@ from synergyml.config import SynergyMLConfig
 from synergyml.multimodal import MultimodalClassifier
 
 # Setup credentials
-api_key = "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"
+api_key = "your_api_key"
 SynergyMLConfig.set_openai_key(api_key)
 SynergyMLConfig.set_openai_org("org-2yCwUrd6qu4deDTpUzDrHUwW")
 
